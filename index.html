@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حسن | مطور ومبرمج</title>
+  <!-- إضافة خطوط جديدة من Google Fonts -->
+  <link href="" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      /* خلفية محسنة بألوان عميقة وجذابة */
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #c9d1d9;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+    /* خلفية متحركة بأشكال هندسية */
+    .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+      
+      .animated-bg .shape {
+        position: absolute;
+        background: rgba(88, 166, 255, 0.3);
+        border: 2px solid rgba(88, 166, 255, 0.5);
+        animation: float 12s infinite ease-in-out, colorChange 5s infinite alternate;
+        opacity: 0.7;
+        mix-blend-mode: multiply; /* لإضافة تأثير مزج للألوان */
+      }
+      
+      .shape.square {
+        width: 90px;
+        height: 90px;
+        background-color: rgba(255, 105, 180, 0.5);
+      }
+      
+      .shape.circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: rgba(34, 193, 195, 0.5);
+      }
+      
+      .shape.triangle {
+        width: 0;
+        height: 0;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        border-bottom: 80px solid rgba(0, 255, 255, 0.4);
+        background: none;
+      }
+      
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-60px) rotate(180deg);
+        }
+        100% {
+          transform: translateY(0) rotate(360deg);
+        }
+      }
+      
+      @keyframes colorChange {
+        0% {
+          background-color: rgba(88, 166, 255, 0.3);
+        }
+        50% {
+          background-color: rgba(255, 165, 0, 0.3);
+        }
+        100% {
+          background-color: rgba(34, 193, 195, 0.3);
+        }
+      }
+      
+      .shape:nth-child(1) {
+        top: 10%;
+        left: 5%;
+        animation-duration: 15s;
+      }
+      
+      .shape:nth-child(2) {
+        top: 30%;
+        left: 80%;
+        animation-duration: 18s;
+      }
+      
+      .shape:nth-child(3) {
+        top: 70%;
+        left: 20%;
+        animation-duration: 12s;
+      }
+      
+      .shape:nth-child(4) {
+        top: 50%;
+        left: 50%;
+        animation-duration: 20s;
+      }
+      
+      .shape:nth-child(5) {
+        top: 80%;
+        left: 70%;
+        animation-duration: 16s;
+      }
+      
+      .header {
+        background: #222;
+        padding: 15px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        z-index: 100;
+      }
+      
+      .header ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+      }
+      
+    .header ul li a {
+      text-decoration: none;
+      padding: 0;
+      background: none;
+      color: #58a6ff;
+      font-size: 1.2em;
+      border: none;
+      transition: color 0.3s;
+    }
+    .header ul li a:hover {
+      color: #4178b8;
+    }
+    .container {
+      max-width: 800px;
+      margin: 100px auto 20px;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: 4em;
+      font-weight: bold;
+      color: #58a6ff;
+      margin-bottom: 10px;
+      animation: fadeIn 1.5s ease-out;
+    }
+    p {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #c9d1d9;
+    }
+    h2 {
+      font-size: 2.5em;
+      margin-top: 40px;
+      color: #58a6ff;
+      animation: fadeIn 2s ease-out;
+    }
+    .official-accounts {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .official-account {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s, background 0.3s;
+      margin-bottom: 20px;
+    }
+    .official-account:hover {
+      transform: scale(1.1);
+      background: #333;
+    }
+    .official-account img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .official-account img:hover { transform: rotate(10deg); }
+    .official-account p {
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #58a6ff;
+    }
+    .contact-box {
+      background: linear-gradient(135deg, #222, #333);
+      padding: 30px;
+      margin: 40px auto 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      max-width: 500px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .contact-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.7);
+    }
+    .contact-box h3 {
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      color: #58a6ff;
+    }
+    .contact-box input,
+    .contact-box textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+    .contact-box textarea { resize: vertical; }
+    .contact-box button {
+      background: #58a6ff;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 5px;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    .contact-box button:hover { background: #4178b8; }
+    .sent-msg {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #58a6ff;
+      animation: fadeIn 1s ease-out;
+    }
+    .query {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #c9d1d9;
+      font-style: italic;
+    }
+    /* تأثيرات للكتابات */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+    /* قسم تطويراتي مع خبرات */
+    .experiences {
+      font-family: 'Reem Kufi', sans-serif;
+      background: rgba(88, 166, 255, 0.1);
+      border: 2px dashed #58a6ff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 40px auto;
+      animation: slideIn 1s ease-out;
+    }
+    .experiences h3 {
+      font-size: 2em;
+      color: #58a6ff;
+      margin-bottom: 10px;
+      animation: fadeIn 1.5s ease-out;
+    }
+    .experiences p {
+      font-size: 1.4em;
+      line-height: 1.5;
+      color: #c9d1d9;
+      text-align: left;
+      margin: 0 10%;
+      animation: fadeIn 2s ease-out;
+    }
+    /* أقسام الصور كما سابقاً */
+    .developments,
+    .software {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .dev-item, .soft-item {
+      border: 3px solid #58a6ff;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .dev-item img, .soft-item img {
+      width: 300px;
+      height: auto;
+      display: block;
+    }
+    .dev-item:hover, .soft-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    }
+    /* قسم برمجيات */
+    .software {
+      border: 3px solid #4178b8;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .lo-item img {
+        width: 100px; /* تحديد عرض الصور */
+        height: auto; /* الحفاظ على تناسب الأبعاد */
+        display: block;
+      }
+      
+    
+  </style>
+</head>
+<body>
+  <div class="animated-bg">
+    <div class="shape square"></div>
+    <div class="shape circle"></div>
+    <div class="shape triangle"></div>
+    <div class="shape square"></div>
+    <div class="shape circle"></div>
+  </div>
+  <div class="header">
+    <ul>
+      <li><a href="qu.html">اسئله</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <h1>مرحبًا، أنا حسن</h1>
+    <p>مبرمج | مطور ألعاب | صانع محتوى</p>
+    <div class="query">وش قاعد يسوي حسن الحين؟</div>
+    <h2>الحسابات الرسمية</h2>
+    <div class="official-accounts">
+      <div class="official-account">
+        <a href="https://instagram.com/i309h" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
+        <p>@i309h</p>
+      </div>
+      <div class="official-account">
+        <a href="https://www.snapchat.com/add/hs6_10" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/1200px-Snapchat_logo.svg.png" alt="Snapchat">
+        </a>
+        <p>@hs6_10</p>
+      </div>
+    </div>
+    <h2>وجه رسالة</h2>
+    <div class="contact-box">
+      <input type="text" id="name" placeholder="اسمك" required>
+      <textarea id="message" placeholder="اكتب رسالتك هنا الي تبغي توجهها لي" rows="4" required></textarea>
+      <button id="sendBtn">إرسال الرسالة</button>
+    </div>
+    <div id="sentMsg" class="sent-msg" style="display: none;">تم ارسال الرساله بس</div>
+    
+    <!-- قسم تطويراتي مع الخبرات -->
+    <h2>تطويراتي</h2>
+    <div class="experiences">
+      <h3>يا طويل العمر خبراتي</h3>
+     <h2>
+        <h2>لغات البرمجة التي أتقنها</h2>
+<div class="software">
+  <div class="lo-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5">
+  </div>
+  <div class="lo-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3">
+  </div>
+  <div class="lo-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
+  </div>
+  <div class="lo-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/React_Native_Logo.png" alt="ReactJS">
+  </div>
+  <div class="lo-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png" alt="SQL">
+  </div>
+  <div class="lo-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C">
+  </div>
+  <div class="lo-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP">
+  </div>
+  <div class="lo-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/Python.svg" alt="Python">
+  </div>
+</div>
+
+<h2>الخبرات</h2>
+<div class="experiences">
+  <div class="exp-item">
+    <h3>تطوير الواجهات الأمامية</h3>
+    <p>خبرة في تصميم وتطوير واجهات المستخدم باستخدام HTML, CSS, JavaScript, و ReactJS.</p>
+  </div>
+  <div class="exp-item">
+    <h3>تطوير الواجهات الخلفية</h3>
+    <p>بناء أنظمة خلفية باستخدام PHP, Python, و SQL لإدارة البيانات والخوادم.</p>
+  </div>
+  <div class="exp-item">
+    <h3>تصميم قواعد البيانات</h3>
+    <p>تصميم قواعد بيانات فعالة باستخدام MySQL و PostgreSQL، وتحسين استعلامات SQL.</p>
+  </div>
+  <div class="exp-item">
+    <h3>برمجة الأنظمة والتطبيقات</h3>
+    <p>تطوير تطبيقات باستخدام C و Python، وحل المشكلات البرمجية بكفاءة.</p>
+  </div>
+</div>
+
+
+     </h2>
+    
+    <!-- قسم برمجيات -->
+    <h2>برمجيات</h2>
+    <div class="software">
+      <div class="soft-item">
+        <img src="https://i.pinimg.com/736x/71/d1/bb/71d1bb946880a3cdd57c68ee2d4dc960.jpg" alt="برمجة 1">
+      </div>
+      <div class="soft-item">
+        <img src="https://i.pinimg.com/736x/e1/07/73/e1077308d342d8dbaaf7e08aff1e3518.jpg" alt="برمجة 2">
+      </div>
+      <div class="soft-item">
+        <img src="https://i.pinimg.com/736x/04/4b/e4/044be47e19dec7c0ea2a70c0e88be490.jpg" alt="برمجة 3">
+      </div>
+    </div>
+  </div>
+  <script>
+    // عند النقر على زر الإرسال يتم حفظ الرسالة في localStorage وتظهر رسالة تأكيد الإرسال دون إعادة التوجيه
+    document.getElementById('sendBtn').addEventListener('click', function() {
+      const name = document.getElementById('name').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if(name === "" || message === "") {
+        alert("يرجى تعبئة الحقول المطلوبة");
+        return;
+      }
+      const msgObj = { name: name, message: message, timestamp: new Date().getTime() };
+      let messages = JSON.parse(localStorage.getItem('messages')) || [];
+      messages.push(msgObj);
+      localStorage.setItem('messages', JSON.stringify(messages));
+      // إعادة تعيين الحقول
+      document.getElementById('name').value = "";
+      document.getElementById('message').value = "";
+      // عرض رسالة التأكيد
+      const sentMsgDiv = document.getElementById('sentMsg');
+      sentMsgDiv.style.display = "block";
+      setTimeout(function() {
+        sentMsgDiv.style.display = "none";
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
